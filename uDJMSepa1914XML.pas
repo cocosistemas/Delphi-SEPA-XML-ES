@@ -1,4 +1,8 @@
 unit uDJMSepa1914XML;
+{
+https://github.com/cocosistemas/Delphi-SEPA-XML-ES
+Diego J.Muñoz. Freelance. Cocosistemas.com
+}
 //2016-01-15
 //ver los pdfs de los bancos, con la norma.
 //19.14 cobros. EL Ordenante COBRA AL DEUDOR
@@ -196,9 +200,10 @@ FsFileName:=sFileName;
 assignFile(FsTxt,sFileName);
 rewrite(FsTxt);
 WriteLn(FsTxt, '<?xml version="1.0" encoding="UTF-8"?>');
-WriteLn(FsTxt, '<Document xmlns="urn:iso:std:iso:20022:tech:xsd:'+C_Schema_19+'"'+
-                  ' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"'+
-                  ' xsi:schemaLocation="urn:iso:std:iso:20022:tech:xsd:'+C_Schema_19+' '+C_Schema_19+'.xsd">');
+
+WriteLn(FsTxt,
+'<Document xmlns="urn:iso:std:iso:20022:tech:xsd:'+C_Schema_19+'"'+
+                  ' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">');
 
 //MESSAGE ROOT. Identifica el tipo de mensaje: iniciación de adeudos directos
 WriteLn(FsTxt, '<CstmrDrctDbtInitn>');

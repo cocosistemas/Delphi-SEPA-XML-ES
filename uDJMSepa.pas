@@ -1,4 +1,8 @@
 unit uDJMSepa;
+{
+https://github.com/cocosistemas/Delphi-SEPA-XML-ES
+Diego J.Muñoz. Freelance. Cocosistemas.com
+}
 
 interface
 

@@ -97,6 +97,8 @@ TDJMNorma3414XML = class //el Ordenante paga al Beneficiario
    procedure CreateFile(sFileName:string);
    procedure closeFile;
    function HayPagos:Boolean;
+   //pone a cero listas e importe
+   procedure clear;
 
 end;
 
@@ -130,18 +132,8 @@ begin
 end;
 
 destructor TDJMNorma3414XML.destroy;
-var
-  i,j:Integer;
 begin
-for i:=1 to FiOrdenantes
-do begin
-   //para cada Ordenante destruimos sus pagos
-   for j:= 1 to FlistOrdenantes[i].iPagos
-   do begin
-      FListOrdenantes[i].listPagos[j].free;
-      end;
-   FListOrdenantes[i].free;
-   end;
+self.clear;
 inherited destroy;
 end;
 
@@ -390,6 +382,23 @@ end;
 function TDJMNorma3414XML.HayPagos;
 begin
   Result:=FmTotalImportes<>0;
+end;
+
+procedure TDJMNorma3414XML.clear;
+var
+  i,j:Integer;
+begin
+for i:=1 to FiOrdenantes
+do begin
+   //para cada Ordenante destruimos sus pagos
+   for j:= 1 to FlistOrdenantes[i].iPagos
+   do begin
+      FListOrdenantes[i].listPagos[j].free;
+      end;
+   FListOrdenantes[i].free;
+   end;
+FiOrdenantes:=0;
+FmTotalImportes:=0;
 end;
 
 end.

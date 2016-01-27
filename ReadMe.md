@@ -1,6 +1,6 @@
-# Creación de ficheros normas 19.14 y 34.14 SEPA formato XML
+# Delphi: Creación de ficheros normas 19.14 y 34.14 SEPA formato XML
 
-(Para Delphi 7, no debe haber problemas con versiones superiores, **VERSION BETA, FALTA COMPROBAR CON LOS BANCOS**)
+(Para Delphi 7, no debe haber problemas con versiones superiores, la norma 34 todavía está en versión Beta, falta comprobar con los bancos.)
 
 Estas unidades contienen dos objetos para la creación de los siguientes ficheros:
 
@@ -22,7 +22,8 @@ Cosas a tener en cuenta:
 
 - No se contemplan órdenes de devoluciones, etc.
 
-- En el momento actual, **Versión Beta**! falta comprobar con los bancos. No tengo facilidad de comprobar los ficheros, dependo de terceros para ello. Actualizaré según vaya evolucionando el asunto.
+- En el momento actual, **La norma 34.14 está en versión Beta**! falta comprobar con los bancos. No tengo facilidad de comprobar los ficheros, dependo de terceros para ello. Actualizaré según vaya evolucionando el asunto. 
+- Los ficheros generados con el objeto norma 19.14 ya han sido aceptados en varias entidades.
 
 - No se hace ningún chequeo de contenidos (IBAN, BIC, etc)
 

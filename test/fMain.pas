@@ -39,7 +39,8 @@ begin
   oNorma1914.AddOrdenante('ID UNICO DE LAS ORDENES DE ESTE ORDENANTE',
                           'EMPRESA ORDENANTE 1 S.L.',
                           'el iban de este ordenante',
-                          'BicOrdenante1'
+                          'BicOrdenante1',
+                          'ID.ORDENANTE'
                          );
   //las ordenes de cobro de este ordenante
   oNorma1914.AddCobro('idCobro unico', //utilizar un nº de documento o contador, etc

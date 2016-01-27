@@ -46,6 +46,7 @@ TInfoOrdenante = class
                 sNombreOrdenante:string;
                 sIBANOrdenante:string;
                 sBICOrdenante:string;
+                sIdOrdenante:string; //el ID único del ordenante, normalmente dado por el banco
                 listCobros : TListOfCobros;
                 iCobros : Integer;
 end;
@@ -70,6 +71,7 @@ TDJMNorma1914XML = class //el Ordenante cobra al DEUDOR
    procedure writeDirectDebitOperationInfo(oCobro:TInfoCobro);
 
    procedure writeInfoMandato(sIdMandato:string;dDateOfSignature:TDateTime);
+   procedure writeIdentificacionOrdenante(sIdOrdenanteAux:string);
 
    function CalculateNumOperaciones:Integer;
 
@@ -84,7 +86,8 @@ TDJMNorma1914XML = class //el Ordenante cobra al DEUDOR
                          sPayMentId:string;
                          sNombreOrdenante:string;
                          sIBANOrdenante:string;
-                         sBICOrdenante:string
+                         sBICOrdenante:string;
+                         sIdOrdenante:string
                         );
 
    procedure AddCobro(
@@ -296,14 +299,9 @@ begin
   //Fijo a 'SLEV'
   writeLn(FsTxt, '<ChrgBr>'+'SLEV'+'</ChrgBr>');
 
-  { ESTO NO LO PONEMOS
+
   //2.27 Identificación del Ordenante – CreditorSchemeIdentification
-  writeLn(FsTxt, '<CdtrSchmeId><Id><PrvtId><Othr>');
-  //Id Identificación única e inequívoca de una persona
-  writeLn(FsTxt, '<Id>'+uSEPA_CleanStr(CdtrSchmeIdIdPrvtIdOthrId)+'</Id>');
-  writeLn(FsTxt, '<SchmeNm><Prtry>'+uSEPA_CleanStr(CdtrSchmeIdIdPrvtIdOthrSchmeNmPrtry)+'</Prtry></SchmeNm>');
-  writeLn(FsTxt, '</Othr></PrvtId></Id></CdtrSchmeId>');
-  }
+  writeIdentificacionOrdenante(oOrdenante.sIdOrdenante);
 
   //2.28 1..n Información de la operación de adeudo directo – DirectDebitTransactionInformation
   for iCobro := 1 to oOrdenante.iCobros
@@ -340,6 +338,9 @@ begin
   WriteLn(FsTxt,  '</DrctDbtTx>');
 
   //2.66 Identificación del Ordenante – CreditorSchemeIdentification
+  //es como el 2.27. No lo ponemos porque ya ponemos el 2.27
+  //writeIdentificacionOrdenante(sIdOrdenanteAux);
+
   //2.70 Entidad del deudor – DebtorAgent
   WriteLn(FsTxt,  '<DbtrAgt>');
   uSEPA_writeBICInfo(FsTxt, oCobro.sBIC);
@@ -456,6 +457,7 @@ begin
         FListOrdenantes[FiOrdenantes].sNombreOrdenante:=sNombreOrdenante;
         FListOrdenantes[FiOrdenantes].sIBANOrdenante:=sIBANOrdenante;
         FListOrdenantes[FiOrdenantes].sBICOrdenante:=sBICOrdenante;
+        FListOrdenantes[FiOrdenantes].sIdOrdenante:=sIdOrdenante;
         FListOrdenantes[FiOrdenantes].iCobros := 0;
        end; 
 end;
@@ -477,4 +479,19 @@ function TDJMNorma1914XML.HayCobros;
 begin
   Result:=FmTotalImportes<>0;
 end;
+
+procedure TDJMNorma1914XML.writeIdentificacionOrdenante;
+begin
+writeln(FsTxt,'<CdtrSchmeId>');
+writeln(FsTxt,'<Id>');
+writeln(FsTxt,'<PrvtId>');
+writeln(FsTxt,'<Othr>');
+writeln(FsTxt,'<Id>'+uSEPA_CleanStr(sIdOrdenanteAux)+'</Id>');
+writeln(FsTxt,'<SchmeNm><Prtry>SEPA</Prtry></SchmeNm>');
+writeln(FsTxt,'</Othr>');
+writeln(FsTxt,'</PrvtId>');
+writeln(FsTxt,'</Id>');
+writeln(FsTxt,'</CdtrSchmeId>');
+end;
+
 end.

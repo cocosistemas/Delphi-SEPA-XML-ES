@@ -16,3 +16,5 @@ uDJMSepa3414XML.dcu
 uDJMSepa3414XML.~pas
 test/D7TestSepaXML.dsk
 test/D7TestSepaXML.~dsk
+test/fMain.ddp
+test/fMain.~ddp

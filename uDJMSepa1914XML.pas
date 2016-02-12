@@ -108,7 +108,7 @@ TDJMNorma1914XML = class //el Ordenante cobra al DEUDOR
 end;
 
 implementation
-uses uDJMSepa, SysUtils, windows, math, dialogs;
+uses uDJMSepa, SysUtils, windows, dialogs;
 
 const
  C_Schema_19 = 'pain.008.001.02';

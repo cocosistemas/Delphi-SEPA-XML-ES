@@ -103,7 +103,7 @@ TDJMNorma3414XML = class //el Ordenante paga al Beneficiario
 end;
 
 implementation
-uses uDJMSepa, SysUtils, windows, math, dialogs;
+uses uDJMSepa, SysUtils, windows, dialogs;
 
 const
  C_Schema_34 = 'pain.001.001.03';
@@ -189,8 +189,8 @@ WriteLn(FsTxt,
 '<Document xmlns="urn:iso:std:iso:20022:tech:xsd:'+C_Schema_34+'"'+
                   ' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">');
 
-//MESSAGE ROOT. Identifica el tipo de mensaje: iniciación de adeudos directos
-WriteLn(FsTxt, '<CstmrDrctDbtInitn>');
+//MESSAGE ROOT. Identifica el tipo de mensaje
+WriteLn(FsTxt, '<CstmrCdtTrfInitn>'); //'<CstmrDrctDbtInitn>');
 writeGroupHeader;
 //la info de cada Ordenante 
 for iOrdenante:=1 to FiOrdenantes
@@ -198,7 +198,7 @@ do begin
    if FListOrdenantes[iOrdenante].iPagos>0
    then writeOrdenesPago(FListOrdenantes[iOrdenante]);
    end;
-WriteLn(FsTxt, '</CstmrDrctDbtInitn>');
+WriteLn(FsTxt, '</CstmrCdtTrfInitn>');
 WriteLn(FsTxt, '</Document>');
 end;
 

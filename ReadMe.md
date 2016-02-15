@@ -22,9 +22,6 @@ Cosas a tener en cuenta:
 
 - No se contemplan órdenes de devoluciones, etc.
 
-- En el momento actual, **La norma 34.14 está en versión Beta**! falta comprobar con los bancos. No tengo facilidad de comprobar los ficheros, dependo de terceros para ello. Actualizaré según vaya evolucionando el asunto. 
-- Los ficheros generados con el objeto norma 19.14 ya han sido aceptados en varias entidades.
-
 - No se hace ningún chequeo de contenidos (IBAN, BIC, etc)
 
 - Vea el proyecto test de ejemplo.

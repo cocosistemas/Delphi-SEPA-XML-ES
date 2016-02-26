@@ -1,7 +1,5 @@
 # Delphi: Creación de ficheros normas 19.14 y 34.14 SEPA formato XML
 
-(Para Delphi 7, no debe haber problemas con versiones superiores, la norma 34 todavía está en versión Beta, falta comprobar con los bancos.)
-
 Estas unidades contienen dos objetos para la creación de los siguientes ficheros:
 
 - Norma 19.14 SEPA XML. Es un fichero de órdenes de cobro. El **ordenante** cobra al **deudor**. Internamente tenemos un array de ordenantes, cada uno con sus órdenes de cobro. Basta utilizar AddOrdenante, AddCobro. Como cada ordenante tiene una cuenta de abono para todos los cobros, internamente el objeto se encarga de colocar cada cobro en su ordenante. **Ver el test** está ahí explicado el uso de los objetos.
@@ -33,6 +31,8 @@ La normativa:
 
 - Para la norma 19.14 buscar **Órdenes en formato ISO 20022 para emisión de adeudos directos SEPA en euros** por ejemplo [https://empresa.lacaixa.es/deployedfiles/empresas/Estaticos/pdf/Transferenciasyficheros/CuadernoXMLSDDCoreFebrero2014.pdf](https://empresa.lacaixa.es/deployedfiles/empresas/Estaticos/pdf/Transferenciasyficheros/CuadernoXMLSDDCoreFebrero2014.pdf)
 
+
+Actualización (febrero 2016): Ya está testeado en 3 bancos españoles. Tanto la norma 19.14 como la 34.14 y los ficheros han sido aceptados.
 
 Espero que sea de utilidad.
 Diego J. Muñoz. 

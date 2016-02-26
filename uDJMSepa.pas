@@ -30,11 +30,23 @@ end;
 function uSEPA_FormatAmountXML(const d: Currency; const digits: Integer = 2): String;
 var
   OldDecimalSeparator: Char;
+  {$if CompilerVersion>22}  //superiores a xe
+  FS: TFormatSettings;
+  {$ifend}
 begin
-  OldDecimalSeparator := DecimalSeparator; // note: not thread-safe
-  DecimalSeparator    := '.';
-  Result              := CurrToStrF(d, ffFixed, digits);
-  DecimalSeparator    := OldDecimalSeparator;
+  {$if CompilerVersion>22}
+    OldDecimalSeparator := FS.DecimalSeparator;
+    FS.DecimalSeparator := '.';
+  {$else}
+    OldDecimalSeparator := DecimalSeparator;
+    DecimalSeparator := '.';
+  {$ifend}
+  Result := CurrToStrF(d, ffFixed, digits);
+  {$if CompilerVersion>22}
+    FS.DecimalSeparator := OldDecimalSeparator;
+  {$else}
+    DecimalSeparator := OldDecimalSeparator;
+  {$ifend}
 end;
 
 function uSEPA_FormatDateTimeXML(const d: TDateTime): String;

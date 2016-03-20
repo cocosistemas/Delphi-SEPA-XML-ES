@@ -427,7 +427,7 @@ FListOrdenantes[iOrdenanteFound].ListCobros[iCobrosAux].sIdMandato:=sIdMandato;
 FListOrdenantes[iOrdenanteFound].ListCobros[iCobrosAux].dDateOfSignature:=dDateOfSignature;
 FListOrdenantes[iOrdenanteFound].ListCobros[iCobrosAux].sBIC:=sBIC;
 FListOrdenantes[iOrdenanteFound].ListCobros[iCobrosAux].sNombreDeudor:=sNombreDeudor;
-FListOrdenantes[iOrdenanteFound].ListCobros[iCobrosAux].sIBAN:=sIBAN;
+FListOrdenantes[iOrdenanteFound].ListCobros[iCobrosAux].sIBAN:=Trim(sIBAN);
 FListOrdenantes[iOrdenanteFound].ListCobros[iCobrosAux].sConcepto:=sConcepto;
 end;
 

@@ -54,6 +54,7 @@ end;
 TListOrdenantes = array[1..10] of TInfoOrdenante;
 
 TDJMNorma1914XML = class //el Ordenante cobra al DEUDOR
+  private
    FsFileName : string;
    FsTxt : text;
    FiOrdenantes : integer;
@@ -65,7 +66,6 @@ TDJMNorma1914XML = class //el Ordenante cobra al DEUDOR
    FsIdPresentador : string; //id presentador norma AT02
    FdOrdenesCobro  : TDateTime; //fecha del cargo en cuenta, PARA TODAS LAS ORDENES
 
-   private
    procedure WriteGroupHeader;
    procedure writeOrdenesCobro(oOrdenante:TInfoOrdenante);
    procedure writeDirectDebitOperationInfo(oCobro:TInfoCobro);
@@ -76,6 +76,8 @@ TDJMNorma1914XML = class //el Ordenante cobra al DEUDOR
    function CalculateNumOperaciones:Integer;
 
    public
+   property iOrdenantes:integer read FiOrdenantes;
+   property listOrdenantes:TListOrdenantes read FListOrdenantes;
    constructor create;
    destructor destroy; reintroduce;
    procedure SetInfoPresentador(dFileDate:TDateTime;sNombrePresentador:string;

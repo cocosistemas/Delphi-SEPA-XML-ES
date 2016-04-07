@@ -34,6 +34,15 @@ La normativa:
 
 Actualización (febrero 2016): Ya está testeado en 3 bancos españoles. Tanto la norma 19.14 como la 34.14 y los ficheros han sido aceptados.
 
+Actualización (abril 2016): Hacemos público (en Norma 19.14) el array de ordenantes. Para poder recorrerlo y mostrarle al usuario el resumen de importes, algo así:
+
+     for iOrdenantes:=1 to oNorma1914XML.iOrdenantes do begin
+         mmFicheros.Lines.add(oNorma1914XML.listOrdenantes[iOrdenantes].sNombreOrdenante+' '+
+              oNorma1914XML.listOrdenantes[iOrdenantes].sIBANOrdenante+' '+
+                              uFmt_Numero2Str2(oNorma1914XML.listOrdenantes[iOrdenantes].mSumaImportes)+'€');
+     end;
+
+
 Espero que sea de utilidad.
 Diego J. Muñoz. 
 Freelance.

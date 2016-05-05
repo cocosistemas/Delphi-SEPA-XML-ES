@@ -71,6 +71,8 @@ TDJMNorma3414XML = class //el Ordenante paga al Beneficiario
    function CalculateNumOperaciones:Integer;
 
    public
+   property iOrdenantes:Integer read FiOrdenantes;
+   property listOrdenantes:TListOrdenantes read FListOrdenantes;
    constructor create;
    destructor destroy; reintroduce;
 
